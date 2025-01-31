@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rifa Bera Brf 150cc - Gana una Moto</title>
+    
+    <style>
+        /* Estilo global */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-image: url('https://i.pinimg.com/736x/e4/0c/72/e40c72ecc706ee141e14ad80057efdcc.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        h1, h2 {
+            font-weight: bold;
+            color: #000; /* Cambié el color a negro */
+        }
+
+        /* Estilo para el encabezado */
+        header {
+            background-color: rgba(245, 124, 0, 0.8);
+            color: black; /* Cambié el color a negro */
+            text-align: center;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sección del banner */
+        .banner {
+            text-align: center;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 1200px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .imagen-moto {
+            width: 70%;
+            max-width: 500px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sección de compra y pago */
+        .compra-pago {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px auto;
+            width: 90%;
+            max-width: 900px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .datos-personales label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #000; /* Cambié el color a negro */
+        }
+
+        .datos-personales input, .datos-personales select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* Contenedor para la selección de cantidad de boletos */
+        .cantidad-boletos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos de los botones + y - */
+        .cantidad-boletos button {
+            background-color: transparent;
+            color: #008CBA;
+            border: 2px solid #008CBA;
+            padding: 15px;
+            font-size: 1.5em;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 50px;
+            height: 50px;
+        }
+
+        .cantidad-boletos button:hover {
+            background-color: #008CBA;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Estilo para el recuadro de la cantidad */
+        .cantidad-boletos input {
+            width: 60px;
+            text-align: center;
+            font-size: 1.5em;
+            padding: 10px;
+            border: 2px solid #008CBA;
+            border-radius: 10px;
+            background-color: #f1f1f1;
+            font-weight: bold;
+        }
+
+        .cantidad-boletos input:focus {
+            outline: none;
+            border-color: #005f73;
+        }
+
+        .metodos-pago {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .metodo {
+            background-color: transparent;
+            color: #008CBA;
+            border: 2px solid #008CBA;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .metodo:hover {
+            background-color: #008CBA;
+            color: white;
+        }
+
+        button {
+            background-color: transparent;
+            color: #008CBA;
+            border: 2px solid #008CBA;
+            padding: 12px 20px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #008CBA;
+            color: white;
+        }
+
+        /* Recuadro para el método de pago */
+        .metodo-seleccionado {
+            margin-top: 20px;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+            color: #000; /* Cambié el color a negro */
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        /* Estilo del pie de página */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 50px;
+        }
+
+        /* Estilo del botón de subir comprobante */
+        .comprobante-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: #008CBA;
+            font-size: 1em;
+            border: 2px solid #008CBA;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .comprobante-btn:hover {
+            background-color: #008CBA;
+            color: white;
+        }
+
+        #comprobante {
+            display: none;
+        }
+
+        /* Estilo para mostrar la imagen del comprobante */
+        #comprobante-img {
+            display: none;
+            margin-top: 20px;
+            max-width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>RIFA BERA BRF 150cc</h1>
+        <p>&#x1F4C5; Sorteo: 28 de Febrero - &#x23F0; 11:59 PM</p>
+    </header>
+    
+    <section class="banner">
+        <img src="https://beravirtual.com/wp-content/uploads/2024/09/BRF-2.png" alt="Moto Bera BRF 150cc" class="imagen-moto">
+        <h2>Gana una bera BRF 150cc</h2>
+        <p>&#x1F39F; Precio del boleto: <strong>$0.80 USD</strong></p>
+        <p>&#x1F3C6; 2 tickets premiados de $50 USD</p>
+    </section>
+
+    <section class="compra-pago">
+        <h2>&#x1F6D2; Compra tu boleto</h2>
+
+        <!-- Sección para seleccionar la cantidad de boletos -->
+        <div class="cantidad-boletos">
+            <button onclick="cambiarCantidad(-1)">-</button>
+            <input type="number" id="boletos" min="1" value="1" readonly>
+            <button onclick="cambiarCantidad(1)">+</button>
+        </div>
+
+        <p>&#x1F4B0; Total a pagar: <strong><span id="total">$0.80 USD</span></strong></p>
+
+        <!-- Datos personales -->
+        <div class="datos-personales">
+            <label for="nombre">Nombre Completo:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+            
+            <label for="celular">Celular:</label>
+            <div style="display: flex; align-items: center;">
+                <select id="codigo-area" name="codigo-area" style="width: 100px; padding: 10px; margin-right: 10px;">
+                    <option value="+1">+1 (EE.UU., Canadá)</option>
+                    <option value="+44">+44 (Reino Unido)</option>
+                    <option value="+57">+57 (Colombia)</option>
+                    <option value="+34">+34 (España)</option>
+                    <option value="+58">+58 (Venezuela)</option>
+                    <option value="+54">+54 (Argentina)</option>
+                    <option value="+55">+55 (Brasil)</option>
+                    <option value="+52">+52 (México)</option>
+                    <option value="+61">+61 (Australia)</option>
+                    <option value="+33">+33 (Francia)</option>
+                    <option value="+49">+49 (Alemania)</option>
+                    <option value="+39">+39 (Italia)</option>
+                    <option value="+81">+81 (Japón)</option>
+                    <option value="+91">+91 (India)</option>
+                    <option value="+971">+971 (Emiratos Árabes Unidos)</option>
+                    <option value="+972">+972 (Israel)</option>
+                </select>
+                <input type="tel" id="celular" name="celular" placeholder="Tu número de celular" required>
+            </div>
+
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" id="correo" name="correo" placeholder="Tu correo electrónico" required>
+        </div>
+
+        <h2>&#x1F4B3; Selecciona tu metodo de pago</h2>
+        <div class="metodos-pago">
+            <button class="metodo" onclick="mostrarMetodo('Zelle')">
+                <img src="https://www.citypng.com/public/uploads/preview/zelle-bank-logo-transparent-background-7017516947132382weforkqiv.png" alt="Zelle" style="width: 30px; margin-right: 10px;">
+                Zelle
+            </button>
+            <button class="metodo" onclick="mostrarMetodo('Pagomovil BDV')">
+                <img src="https://play-lh.googleusercontent.com/qGfRCcGXv0z_7piNkez6Vk3Uta2ECKQBRX6ZioGWfZv1wxCsUV-c-JO8TbSTkRVNYkw" alt="Pagomovil BDV" style="width: 30px; margin-right: 10px;">
+                Pagomovil BDV
+            </button>
+            <button class="metodo" onclick="mostrarMetodo('Binance')">
+                <img src="https://logospng.org/wp-content/uploads/binance.png" alt="Binance" style="width: 30px; margin-right: 10px;">
+                Binance
+            </button>
+        </div>
+        <div id="metodo-seleccionado" class="metodo-seleccionado"></div>
+
+        <p>Total a pagar: <strong>$<span id="total2">0.80 USD</span></strong></p>
+        
+        <label for="comprobante" class="comprobante-btn">Subir Comprobante</label>
+        <input type="file" id="comprobante" name="comprobante" accept="image/*" style="display:none;" onchange="mostrarComprobante()">
+        
+        <!-- Recuadro para mostrar la imagen del comprobante -->
+        <img id="comprobante-img" src="" alt="Comprobante de pago" />
+        
+        <button onclick="comprarBoletos()">Comprar Ahora</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Rifa (1) Bera brf 150</p>
+    </footer>
+
+    <script>
+        let precioBoleto = 0.80;
+
+        document.getElementById("boletos").addEventListener("change", function() {
+            actualizarTotal();
+        });
+
+        function cambiarCantidad(cambio) {
+            let cantidad = parseInt(document.getElementById("boletos").value);
+            cantidad += cambio;
+            if (cantidad < 1) cantidad = 1;
+            document.getElementById("boletos").value = cantidad;
+            actualizarTotal();
+        }
+
+        function actualizarTotal() {
+            let cantidad = parseInt(document.getElementById("boletos").value);
+            let total = cantidad * precioBoleto;
+            document.getElementById("total").textContent = "$" + total.toFixed(2) + " USD";
+            document.getElementById("total2").textContent = total.toFixed(2) + " USD";
+        }
+
+        function mostrarMetodo(metodo) {
+            document.getElementById("metodo-seleccionado").textContent = "Método seleccionado: " + metodo;
+        }
+
+        function mostrarComprobante() {
+            let archivo = document.getElementById("comprobante").files[0];
+            let reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById("comprobante-img").src = e.target.result;
+                document.getElementById("comprobante-img").style.display = "block";
+            }
+            reader.readAsDataURL(archivo);
+        }
+
+        function comprarBoletos() {
+            alert("¡Gracias por comprar tus boletos! Nos pondremos en contacto pronto.");
+        }
+    </script>
+</body>
+</html>
+``
